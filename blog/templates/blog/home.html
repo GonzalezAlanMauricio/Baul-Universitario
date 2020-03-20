@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+
+	
+
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- Bootstrap  -->
+
+</head>
+<body>
+
+
+
+	<header class="site-header">
+		<nav class="navbar navbar-expand-sm bg-light">
+
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link 1</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link 2</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link 3</a>
+				</li>
+			</ul>
+
+		</nav>
+	</header>
+	
+	<p>Holas</p>
+	
+	<main>
+		{% for post in posts %}
+		<div class="container pt-5 bg-dark text-white">
+			<h1>Titulo del post : {{post.titulo}}</h1>
+			<p> {{post.contenido}} </p>
+		</div>
+		{% endfor %}
+
+	</main>
+	
+</body>
+</html>
