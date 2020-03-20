@@ -26,6 +26,8 @@ class Comentario(models.Model):
 	#imagen1
 	#imagen2
 	#imagen3
+	def __str__(self):
+		return self.contenido
 
 class Carrera(models.Model):
 	#Carrera va a tener un id autoincremental generado por Django

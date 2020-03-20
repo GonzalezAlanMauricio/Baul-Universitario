@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% block content %}
+	
+	<div class="container pt-5 bg-dark text-white">
+	<p class="text-primary">Titulo del post : {{object.titulo}}</p>
+	<p> {{ object.contenido }} </p>
+	</div>
+	
+	{% if object.comentario_set.all %}
+		{% for comentario in object.comentario_set.all %}
+		<div class="container bg-dark text-white">
+			<p>{{ comentario.autor }} :</p>
+			<p>{{ comentario.contenido }}</p>
+			<p>{{ comentario.fecha_creacion }}</p>
+		</div>
+		{% endfor %}
+	{% else %}
+		<div class="container bg-dark text-white">
+			<p>No hay comentarios</p>
+		</div>
+	{% endif %}
+
+
+		
+
+{% endblock %}
