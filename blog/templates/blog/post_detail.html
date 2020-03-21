@@ -2,10 +2,16 @@
 {% block content %}
 	
 	<div class="container pt-5 bg-dark text-white">
-	<p class="text-primary">Titulo del post : {{object.titulo}}</p>
+	<p class="text-primary">{{ object.autor }}: {{object.titulo}}</p>
 	<p> {{ object.contenido }} </p>
-	</div>
 	
+	{% if object.autor == user %}
+		<a class="btn btn-secondary"  href="{% url 'post-actualizar' object.id %}">Actualizar</a>
+		<a class="btn btn-danger"  href="{% url 'post-eliminar' object.id %}">Eliminar</a>
+	{% endif %}
+	</div>
+	<p></p>
+	<a class="btn btn-secondary"  href="{% url 'post-agregar-comentario' object.id %}">Agregar Comentario</a>
 	{% if object.comentario_set.all %}
 		{% for comentario in object.comentario_set.all %}
 		<div class="container bg-dark text-white">
@@ -20,7 +26,7 @@
 		</div>
 	{% endif %}
 
-
+	
 		
 
 {% endblock %}

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include, path
-from blog.views import PostDetailView, UpdateView
+
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -25,7 +25,7 @@ urlpatterns = [
   
     path('', include('blog.urls')),
 
-    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+    
     path('login/', auth_views.LoginView.as_view(template_name = 'usuario/login.html'), name= "login"),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'usuario/logout.html'), name= "logout")
 ]

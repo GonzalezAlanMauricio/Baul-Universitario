@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -17,6 +18,10 @@ class Post(models.Model):
 	def __str__(self):
 		return self.titulo
 
+	def get_absolute_url(self):
+		return reverse('post-detail', kwargs={'pk': self.pk})
+
+
 class Comentario(models.Model):
 	#Comentario va a tener un id autoincremental generado por Django
 	autor = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -28,6 +33,8 @@ class Comentario(models.Model):
 	#imagen3
 	def __str__(self):
 		return self.contenido
+	def get_absolute_url(self):
+		return reverse('post-detail', kwargs={'pk': self.pk})
 
 class Carrera(models.Model):
 	#Carrera va a tener un id autoincremental generado por Django
