@@ -14,7 +14,6 @@ class Post(models.Model):
 	fecha_creacion = models.DateTimeField(default = timezone.now)
 	autor = models.ForeignKey(User, on_delete=models.CASCADE)
 	materia = models.ForeignKey('Materia', on_delete=models.CASCADE)
-	#comentarios = models.ManyToManyField('Comentario') Si lo descomento al momento de crear un post me pide comentarios
 	def __str__(self):
 		return self.titulo
 
