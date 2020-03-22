@@ -8,7 +8,9 @@ from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
- 
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
+
 
 def index(request):
 	context = {
@@ -68,3 +70,17 @@ class ComentarioCreateView(LoginRequiredMixin, CreateView):
 		form.instance.autor = autor
 		form.instance.post = post
 		return super().form_valid(form)
+
+class ComentarioDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+	model = Comentario
+
+	def test_func(self):
+		comentario = self.get_object()
+		if self.request.user == comentario.autor:
+			return True
+			return False
+
+
+
+	def get_success_url(self):
+		return reverse_lazy('post-detail', kwargs={'pk': self.object.post_id})

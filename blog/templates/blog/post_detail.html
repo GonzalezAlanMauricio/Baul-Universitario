@@ -15,6 +15,9 @@
 	{% if object.comentario_set.all %}
 		{% for comentario in object.comentario_set.all %}
 		<div class="container bg-dark text-white">
+			{% if user == comentario.autor %}
+				<a href="{% url 'eliminarComentario' comentario.id %}" class="btn btn-danger" >Eliminar Comentario</a>
+			{% endif %}
 			<p>{{ comentario.autor }} :</p>
 			<p>{{ comentario.contenido }}</p>
 			<p>{{ comentario.fecha_creacion }}</p>
