@@ -34,7 +34,7 @@ class Comentario(models.Model):
 	def __str__(self):
 		return self.contenido
 	def get_absolute_url(self):
-		return reverse('post-detail', kwargs={'pk': self.pk})
+		return reverse('post-detail', kwargs={'pk': self.post.pk})
 
 class Carrera(models.Model):
 	#Carrera va a tener un id autoincremental generado por Django

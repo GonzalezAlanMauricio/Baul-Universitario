@@ -1,17 +1,15 @@
 {% extends "blog/base.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="container">
-
 	{% if request.user.is_authenticated %}
 		<p>Ya estas logeado</p>
 	{% else %}
-		<p>Ingresa</p>
+		<p>Registrarse</p>
 
 		<form method="POST" >
 			{% csrf_token %}
 			<fieldset>
-				{{ form  | crispy}}
+				{{ form | crispy }}
 			</fieldset>
 			<button type="submit" >Ingresar</button>
 		</form>
@@ -19,7 +17,4 @@
 </div>
 
 	
-
-
-
 {% endblock %}
