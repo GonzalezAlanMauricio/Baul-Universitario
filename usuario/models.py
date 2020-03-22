@@ -17,4 +17,4 @@ class Perfil(models.Model):
 	info = models.TextField(max_length = 500) 
 	#¿Reportes? despues
 	def __str__(self):
-		return self.usuario.username
+		return f'Perfil de {self.usuario.username}'
