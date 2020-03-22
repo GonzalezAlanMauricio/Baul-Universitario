@@ -8,9 +8,9 @@ class Post(models.Model):
 	#Post va a tener un id autoincremental generado por Django
 	contenido = models.TextField()
 	titulo = models.CharField(max_length = 1000) 
-	#imagen1
-	#imagen2
-	#imagen3
+	imagen1 = models.ImageField(default = 'default.jpg', upload_to = 'post_pics')
+	imagen2 = models.ImageField(default = 'default.jpg', upload_to = 'post_pics')
+	imagen3 = models.ImageField(default = 'default.jpg', upload_to = 'post_pics')
 	fecha_creacion = models.DateTimeField(default = timezone.now)
 	autor = models.ForeignKey(User, on_delete=models.CASCADE)
 	materia = models.ForeignKey('Materia', on_delete=models.CASCADE)
@@ -27,9 +27,9 @@ class Comentario(models.Model):
 	fecha_creacion = models.DateTimeField(default = timezone.now)
 	contenido = models.TextField(default = 'Escribe un comentario')
 	post = models.ForeignKey('Post', on_delete = models.CASCADE)
-	#imagen1
-	#imagen2
-	#imagen3
+	imagen1 = models.ImageField(default = 'default.jpg', upload_to = 'comentario_pics')
+	imagen2 = models.ImageField(default = 'default.jpg', upload_to = 'comentario_pics')
+	imagen3 = models.ImageField(default = 'default.jpg', upload_to = 'comentario_pics')
 	def __str__(self):
 		return self.contenido
 	def get_absolute_url(self):

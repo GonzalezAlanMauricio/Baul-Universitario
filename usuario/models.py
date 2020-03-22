@@ -8,6 +8,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class Perfil(models.Model):
 	usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+	imagen_perfil = models.ImageField(default = 'default.jpg', upload_to = 'perfil_pics')
 	nombres = models.CharField(max_length=100) 
 	apellidos = models.CharField(max_length=100)
 	edad = models.IntegerField(        
