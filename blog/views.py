@@ -24,6 +24,7 @@ def index(request):
 class HomePostDetailView(ListView):
 	context_object_name = 'posts'
 	paginate_by = 5
+	ordering = ['-fecha_creacion']	
 	model = Post
 
 class PostDetailView(DetailView):
