@@ -5,7 +5,7 @@ from django.contrib import messages
 # Create your views here.
 def registrarse(request):
 	if request.method == "POST":
-		form = UserRegisterForm(request.POST)
+		form = UserRegisterForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
 			usuario = form.save()
@@ -14,15 +14,15 @@ def registrarse(request):
 			usuario.password1 = form.cleaned_data.get('password1')
 			usuario.perfil.apellidos = form.cleaned_data.get('apellidos')
 			usuario.perfil.nombres = form.cleaned_data.get('nombres')
-			usuario.perfil.carreras.set(form.cleaned_data.get('carreras')) 
+			usuario.perfil.carreras.set(form.cleaned_data.get('carreras'))
+			usuario.perfil.imagen_perfil = form.cleaned_data.get('imagen_perfil') 
 			#usuario.perfil.imagen_perfil = form.cleaned_data.get('imagen_perfil')
 			usuario.save()
 			
 			#usuario = form.cleaned_data.get('username')
 			#messages.success(request, f'Cuenta creada para {usuario.username}')
 			return redirect('login')
-		else:
-			return redirect('logout')
+		
 
 	else:
 		form = UserRegisterForm()

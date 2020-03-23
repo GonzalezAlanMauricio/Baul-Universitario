@@ -12,13 +12,15 @@ class UserRegisterForm(UserCreationForm):
 	edad = forms.IntegerField()
 	apellidos = forms.CharField(max_length=100)
 	carreras = forms.ModelMultipleChoiceField(queryset=Carrera.objects.all()) 
-	#authors = forms.ModelMultipleChoiceField(queryset=Author.objects.all())
-	#imagen_perfil = forms.ImageField()
+	
+	imagen_perfil = forms.ImageField(required = False)
 
 	nombres = forms.CharField(max_length=100) 
+
+	
 
 
 	class Meta:
 		model = User
-		fields = ('username', 'password1', 'password2', 'apellidos' , 'nombres' , 'edad', 'carreras', ) 
+		fields = ('username', 'password1', 'password2', 'email' ,'apellidos' , 'nombres' , 'edad', 'carreras', 'imagen_perfil',  ) 
 
