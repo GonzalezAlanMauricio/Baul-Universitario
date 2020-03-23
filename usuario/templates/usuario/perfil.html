@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% block content %}
+	
+	<div class="container bg-dark justify-content-between">
+		<img class="rounded-circle img-cuenta" src="{{ user.perfil.imagen_perfil.url }}" >
+		<p class="text-primary">{{ user.username }}</p>		
+	</div>
+
+	<div class="container ">
+		<p class="text-primary">Información</p>
+		<p class="text-secondary">Apellido: {{ user.perfil.apellidos }}</p>
+		<p class="text-secondary">Nombres: {{ user.perfil.nombres }}</p>
+		<p class="text-secondary">Correo: {{ user.perfil.email }}</p>
+	</div>
+
+	
+{% endblock %}
+

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 # Create your views here.
-def Registrarse(request):
+def registrarse(request):
 	if request.method == "POST":
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
@@ -16,3 +16,8 @@ def Registrarse(request):
 		form = UserCreationForm()
 
 	return render(request, 'usuario/registrarse.html', { 'form': form })
+
+
+def perfil(request):
+
+	return render(request, 'usuario/perfil.html')
