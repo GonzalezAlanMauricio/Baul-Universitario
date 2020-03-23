@@ -15,7 +15,7 @@ class Perfil(models.Model):
 		default=1,
         validators=[MaxValueValidator(100), MinValueValidator(1)])
 	carreras = models.ManyToManyField(blog_models.Carrera)
-	#info_usuario = models.TextField(max_length = 500) 
+	bio = models.TextField(max_length = 500) 
 	#¿Reportes? despues
 	def __str__(self):
 		return f'Perfil de {self.usuario.username}'

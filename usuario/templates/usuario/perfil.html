@@ -8,6 +8,7 @@
 			
 			
 		<p class="text-primary">{{ user.username }}</p>		
+		<p class="text-secondary" >{{ user.perfil.bio }}</p>
 			
 
 		
@@ -18,7 +19,8 @@
 		<p class="text-primary">Información</p>
 		<p class="text-secondary">Apellido: {{ user.perfil.apellidos }}</p>
 		<p class="text-secondary">Nombres: {{ user.perfil.nombres }}</p>
-		<p class="text-secondary">Correo: {{ user.perfil.email }}</p>
+		<p class="text-secondary">Correo: {{ user.email }}</p>
+		<p class="text-secondary">Edad: {{ user.perfil.edad }}</p>
 	</div>
 
 	

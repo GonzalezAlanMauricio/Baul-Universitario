@@ -9,7 +9,7 @@ from blog.models import Carrera
 
 class UserRegisterForm(UserCreationForm):
 	
-	edad = forms.IntegerField()
+	edad = forms.IntegerField(required= False)
 	apellidos = forms.CharField(max_length=100)
 	carreras = forms.ModelMultipleChoiceField(queryset=Carrera.objects.all()) 
 	
@@ -17,7 +17,7 @@ class UserRegisterForm(UserCreationForm):
 
 	nombres = forms.CharField(max_length=100) 
 
-	
+	bio = forms.CharField(required=False, max_length = 500, help_text="Escribi algo sobre vos",widget=forms.Textarea)
 
 
 	class Meta:

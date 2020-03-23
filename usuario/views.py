@@ -17,7 +17,7 @@ def registrarse(request):
 			usuario.perfil.carreras.set(form.cleaned_data.get('carreras'))
 			if form.cleaned_data.get('imagen_perfil'):
 				usuario.perfil.imagen_perfil = form.cleaned_data.get('imagen_perfil')
-
+			usuario.perfil.bio = form.cleaned_data.get('bio')
 			#usuario.perfil.imagen_perfil = form.cleaned_data.get('imagen_perfil')
 			usuario.save()
 			
