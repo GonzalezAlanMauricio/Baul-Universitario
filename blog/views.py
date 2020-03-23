@@ -5,6 +5,7 @@ from .models import Post
 from .models import Comentario
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -17,7 +18,13 @@ def index(request):
 	'posts' : Post.objects.all()
 	
 	}
+	
 	return render(request, 'blog/home.html' , context )
+
+class HomePostDetailView(ListView):
+	context_object_name = 'posts'
+	paginate_by = 5
+	model = Post
 
 class PostDetailView(DetailView):
 	model = Post
