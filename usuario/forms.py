@@ -4,25 +4,21 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Perfil
 from blog.models import Carrera
+#from django.core.validators import MaxValueValidator, MinValueValidators
 
 
-class SignUpForm(UserCreationForm):
+class UserRegisterForm(UserCreationForm):
 	
-	fecha_nacimiento = forms.DateTimeField()
+	edad = forms.IntegerField()
 	apellidos = forms.CharField(max_length=100)
 	carreras = forms.ModelMultipleChoiceField(queryset=Carrera.objects.all()) 
 	#authors = forms.ModelMultipleChoiceField(queryset=Author.objects.all())
+	#imagen_perfil = forms.ImageField()
 
 	nombres = forms.CharField(max_length=100) 
 
-	# def __init__ (self, *args, **kwargs):
-	# 	#brand = kwargs.pop("brand")
-	# 	super(SignUpForm, self).__init__(*args, **kwargs)
-	# 	self.fields["carreras"].widget = forms.widgets.CheckboxSelectMultiple()
-	# 	self.fields["carreras"].help_text = ""
-	# 	self.fields["carreras"].queryset = Carrera.objects.all()
 
 	class Meta:
 		model = User
-		fields = ('username', 'apellidos' , 'nombres' , 'fecha_nacimiento', 'password1', 'password2', 'carreras',) 
+		fields = ('username', 'password1', 'password2', 'apellidos' , 'nombres' , 'edad', 'carreras', ) 
 

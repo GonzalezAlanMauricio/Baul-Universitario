@@ -24,15 +24,32 @@
 			
 			{% if request.user.is_authenticated %}
 				<ul class="navbar-nav">
+
+					<li class="nav-item">
+						<a href="{% url 'perfil' %}">
+							<img class="rounded-circle img-base" src="{{ user.perfil.imagen_perfil.url }}" >
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'perfil' %}">{{user.username}}</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{% url 'logout' %}">Logout</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Perfil</a>
-					</li>
+					</li>					
 				</ul>
 			{% else %}
-				<a class="nav-link" href="{% url 'login' %}">Login </a>	
+
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'registrarse' %}">Registrarse </a>	
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'login' %}">Login </a>			
+					</li>
+				</ul>
+
+				
+				
 			{% endif %}
 
 			
