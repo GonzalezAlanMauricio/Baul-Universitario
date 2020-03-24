@@ -70,7 +70,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class ComentarioCreateView(LoginRequiredMixin, CreateView):
 	model = Comentario
-	fields = ['contenido']
+	fields = ['contenido', 'imagen1', 'imagen2', 'imagen3']
 	def form_valid(self, form):
 		post = Post.objects.get(pk=self.kwargs['pk'])
 		fecha_creacion = datetime.date.today()

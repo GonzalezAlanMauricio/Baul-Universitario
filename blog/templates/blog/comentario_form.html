@@ -7,7 +7,7 @@
 		
 		<p>Ingresa la publicacion</p>
 
-		<form method="POST" >
+		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			<fieldset>
 				{{ form| crispy }}

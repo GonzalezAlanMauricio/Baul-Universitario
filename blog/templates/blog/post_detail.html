@@ -37,7 +37,23 @@
 			<p>{{ comentario.autor }} :</p>
 			<p>{{ comentario.contenido }}</p>
 			<p>{{ comentario.fecha_creacion }}</p>
-
+			<ul class="ul-horizontal">
+				<li>
+					{% if comentario.imagen1 %}
+					<a target="_blank" href="{{comentario.imagen1.url}}">Imagen 1</a>
+					{% endif %}
+				</li>
+				<li>
+					{% if comentario.imagen2 %}
+					<a target="_blank" href="{{comentario.imagen2.url}}">Imagen 2</a>
+					{% endif %}
+				</li>
+				<li>
+					{% if comentario.imagen3 %}
+					<a target="_blank" href="{{comentario.imagen3.url}}">Imagen 3</a>
+					{% endif %}
+				</li>
+			</ul>
 		</div>
 		{% endfor %}
 	{% else %}

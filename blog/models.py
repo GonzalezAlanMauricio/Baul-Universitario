@@ -27,9 +27,9 @@ class Comentario(models.Model):
 	fecha_creacion = models.DateTimeField(default = timezone.now)
 	contenido = models.TextField(default = 'Escribe un comentario')
 	post = models.ForeignKey('Post', on_delete = models.CASCADE)
-	imagen1 = models.ImageField(default = 'default.jpg', upload_to = 'comentario_pics')
-	imagen2 = models.ImageField(default = 'default.jpg', upload_to = 'comentario_pics')
-	imagen3 = models.ImageField(default = 'default.jpg', upload_to = 'comentario_pics')
+	imagen1 = models.ImageField( null=True, blank=True, upload_to = 'comentario_pics')
+	imagen2 = models.ImageField( null=True, blank=True, upload_to = 'comentario_pics')
+	imagen3 = models.ImageField( null=True, blank=True, upload_to = 'comentario_pics')
 	def __str__(self):
 		return self.contenido
 	def get_absolute_url(self):
