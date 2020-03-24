@@ -11,3 +11,11 @@ header{
 	width: 3em;
 	height: 3em;
 }
+
+.ul-horizontal{
+	display: block;
+}
+
+.ul-horizontal>li{
+	display: inline;
+}

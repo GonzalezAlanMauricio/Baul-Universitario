@@ -32,7 +32,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
 	model = Post
-	fields = ['titulo', 'contenido', 'materia']
+	fields = ['titulo', 'contenido', 'materia', 'imagen1', 'imagen2' , 'imagen3', ]
 	
 	
 
@@ -46,7 +46,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Post
-	fields = ['titulo', 'contenido', 'materia']
+	fields = ['titulo', 'contenido', 'materia', 'imagen1', 'imagen2' , 'imagen3']
 	def form_valid(self, form):
 		fecha_creacion = datetime.date.today()
 		autor = self.request.user

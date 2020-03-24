@@ -8,9 +8,9 @@ class Post(models.Model):
 	#Post va a tener un id autoincremental generado por Django
 	contenido = models.TextField()
 	titulo = models.CharField(max_length = 1000) 
-	imagen1 = models.ImageField(default = 'default.jpg', upload_to = 'post_pics')
-	imagen2 = models.ImageField(default = 'default.jpg', upload_to = 'post_pics')
-	imagen3 = models.ImageField(default = 'default.jpg', upload_to = 'post_pics')
+	imagen1 = models.ImageField( upload_to = 'post_pics' , null=True, blank=True)
+	imagen2 = models.ImageField( upload_to = 'post_pics' ,null=True, blank=True)
+	imagen3 = models.ImageField( upload_to = 'post_pics' , null=True, blank=True)
 	fecha_creacion = models.DateTimeField(default = timezone.now)
 	autor = models.ForeignKey(User, on_delete=models.CASCADE)
 	materia = models.ForeignKey('Materia', on_delete=models.CASCADE)

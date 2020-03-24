@@ -4,7 +4,23 @@
 	<div class="container pt-5 bg-dark text-white">
 	<p class="text-primary">{{ object.autor }}: {{object.titulo}}</p>
 	<p> {{ object.contenido }} </p>
-	
+	<ul class="ul-horizontal">
+		<li>
+			{% if object.imagen1 %}
+			<a target="_blank" href="{{object.imagen1.url}}">Imagen 1</a>
+			{% endif %}
+		</li>
+		<li>
+			{% if object.imagen2 %}
+			<a target="_blank" href="{{object.imagen2.url}}">Imagen 2</a>
+			{% endif %}
+		</li>
+		<li>
+			{% if object.imagen3 %}
+			<a target="_blank" href="{{object.imagen3.url}}">Imagen 3</a>
+			{% endif %}
+		</li>
+	</ul>
 	{% if object.autor == user %}
 		<a class="btn btn-secondary"  href="{% url 'post-actualizar' object.id %}">Actualizar</a>
 		<a class="btn btn-danger"  href="{% url 'post-eliminar' object.id %}">Eliminar</a>
@@ -21,7 +37,7 @@
 			<p>{{ comentario.autor }} :</p>
 			<p>{{ comentario.contenido }}</p>
 			<p>{{ comentario.fecha_creacion }}</p>
-			
+
 		</div>
 		{% endfor %}
 	{% else %}
