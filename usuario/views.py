@@ -1,6 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserRegisterForm
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
+from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 def registrarse(request):
@@ -36,3 +40,19 @@ def registrarse(request):
 def perfil(request):
 	
 	return render(request, 'usuario/perfil.html')
+
+class EliminarUsuario(LoginRequiredMixin,DeleteView):
+	model = User
+	success_url = reverse_lazy('blog-home')
+	template_name = 'usuario/user_confirm_delete.html'
+	def test_func(self):
+		perfil = self.get_object()
+		if self.request.user == perfil.usuario:
+			return True
+			return False
+	def get_object(self):
+		#u = self.get_object()
+    	#user = get_object_or_404(User, username = self.kwargs.get('usuario'))
+    	#return User.objects.filter(username=user)
+		return self.request.user
+        #return get_object_or_404(User, self.kwargs.get('username'))

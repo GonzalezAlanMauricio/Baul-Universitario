@@ -28,6 +28,7 @@
 		<p class="text-secondary">Nombres: {{ user.perfil.nombres }}</p>
 		<p class="text-secondary">Correo: {{ user.email }}</p>
 		<p class="text-secondary">Edad: {{ user.perfil.edad }}</p>
+		<a class="btn btn-danger" href="{% url 'eliminar-usuario' %}">Eliminar Cuenta</a>
 	</div>
 
 	

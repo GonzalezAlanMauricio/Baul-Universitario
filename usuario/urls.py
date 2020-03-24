@@ -14,5 +14,6 @@ urlpatterns = [
 
     path('registrarse/', usuario_views.registrarse, name= "registrarse"),
 
-    path('perfil/', usuario_views.perfil, name= "perfil")
+    path('perfil/', usuario_views.perfil, name= "perfil"),
+    path('perfil/eliminar/', usuario_views.EliminarUsuario.as_view(), name= "eliminar-usuario")
 ]
