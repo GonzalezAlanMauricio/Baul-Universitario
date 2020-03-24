@@ -6,6 +6,7 @@ from django.views.generic.edit import DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+
 # Create your views here.
 def registrarse(request):
 	if request.method == "POST":
@@ -25,16 +26,15 @@ def registrarse(request):
 			#usuario.perfil.imagen_perfil = form.cleaned_data.get('imagen_perfil')
 			usuario.save()
 			
-			#usuario = form.cleaned_data.get('username')
-			#messages.success(request, f'Cuenta creada para {usuario.username}')
-			return redirect('login')
+			return redirect('login', context)
+			#return render(request, 'login.html' , context)
 		
 
 	else:
 		form = UserRegisterForm()
 		#return redirect('blog-home')
 
-	return render(request, 'usuario/registrarse.html', { 'form': form })
+	return render(request, 'usuario/registrarse.html', { 'form': form, 'title': "Registrarse" })
 
 
 def perfil(request):
