@@ -41,15 +41,15 @@ def perfil(request):
 	
 	return render(request, 'usuario/perfil.html')
 
-class EliminarUsuario(LoginRequiredMixin,DeleteView):
+class EliminarUsuario(LoginRequiredMixin, UserPassesTestMixin ,DeleteView):
 	model = User
 	success_url = reverse_lazy('blog-home')
 	template_name = 'usuario/user_confirm_delete.html'
 	def test_func(self):
-		perfil = self.get_object()
-		if self.request.user == perfil.usuario:
+		usuario = self.get_object()
+		if self.request.user == usuario:
 			return True
-			return False
+		return False
 	def get_object(self):
 		#u = self.get_object()
     	#user = get_object_or_404(User, username = self.kwargs.get('usuario'))
