@@ -7,6 +7,7 @@
 		<div class="container pt-5 bg-dark text-white">
 		<a href="{% url 'post-detail' post.id %}" class="text-primary">{{ post.autor }}:    {{ post.materia }} :  {{post.titulo}}</a>
 		<p> {{ post.contenido }} </p>
+		<p>El post tiene {{ post.comentario_set.all | length }} comentarios</p>
 		</div>
 
 	{% endfor %}
