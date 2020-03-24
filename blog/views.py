@@ -42,7 +42,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
 	model = Post
-	fields = ['titulo', 'contenido', 'materia', 'imagen1', 'imagen2' , 'imagen3', ]
+	fields = ['titulo', 'contenido', 'materia', 'imagen1', 'imagen2' , 'imagen3', 'tipo' ]
 
 	def get_context_data(self, **kwargs):
 		data = super().get_context_data(**kwargs)

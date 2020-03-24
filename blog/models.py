@@ -14,6 +14,33 @@ class Post(models.Model):
 	fecha_creacion = models.DateTimeField(default = timezone.now)
 	autor = models.ForeignKey(User, on_delete=models.CASCADE)
 	materia = models.ForeignKey('Materia', on_delete=models.CASCADE)
+
+
+	tiposDePost =[
+
+		 ('Solicitud de apunte digital', 'Solicitud de apunte digital'),
+		 ('Solicitud de apunte fisico', 'Solicitud de apunte fisico'),
+		 ('Solicitud de otros materiales', 'Solicitud de otros materiales'),
+		 ('Solicitud de ayuda ', 'Solicitud de ayuda '),
+
+		 ('Recomendacion', 'Recomendacion'),
+		 ('Donacion de apunte digital', 'Donacion de apunte digital'),
+		 ('Donacion de apunte fisico', 'Donacion de apunte fisico'),
+		 ('Donacion de otros materiales', 'Donacion de otros materiales'),
+		
+	]
+		
+	
+		
+
+
+
+	tipo = models.CharField(
+		max_length = 29,
+		choices= tiposDePost ,
+		default= tiposDePost[5]
+	)
+
 	def __str__(self):
 		return self.titulo
 
