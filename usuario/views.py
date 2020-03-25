@@ -26,7 +26,7 @@ def registrarse(request):
 			#usuario.perfil.imagen_perfil = form.cleaned_data.get('imagen_perfil')
 			usuario.save()
 			
-			return redirect('login', context)
+			return redirect('login')
 			#return render(request, 'login.html' , context)
 		
 

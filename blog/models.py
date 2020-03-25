@@ -27,6 +27,7 @@ class Post(models.Model):
 		 ('Donacion de apunte digital', 'Donacion de apunte digital'),
 		 ('Donacion de apunte fisico', 'Donacion de apunte fisico'),
 		 ('Donacion de otros materiales', 'Donacion de otros materiales'),
+		 ('otros', 'otros' )
 		
 	]
 		
