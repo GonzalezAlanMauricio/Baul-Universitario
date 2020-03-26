@@ -1,16 +1,52 @@
 {% extends "blog/base.html" %}
 {% block content %}
 
-	<a class="btn btn-primary" href="{% url 'post-nuevo' %}">Crear un nuevo post</a>
+	<a class="btn btn-primary mb-3" href="{% url 'post-nuevo' %}"><i class="fas fa-plus ml-2"></i>Crear un nuevo post</a>
 
 	{% for post in posts %}
-		<div class="container pt-5 bg-dark text-white">
-		<a href="{% url 'post-detail' post.id %}" class="text-primary">{{ post.autor }}:  {{ post.tipo }} - {{ post.materia }} :  {{post.titulo}}</a>
-		<p> {{ post.contenido }} </p>
-		<p>El post tiene {{ post.comentario_set.all | length }} comentarios</p>
+	<div class="d-flex flex-row ml-5 mb-5 mr-5 pl-3  pr-4 pt-3 bg-dark text-white rounded  ">
+		
+
+		<div class="flex-shrink-1 mr-8 " >
+			<img class="rounded-circle img-base " src="{{ post.autor.perfil.imagen_perfil.url }}" >
+			<p>{{ post.autor }}</p>
 		</div>
 
+		<div class="w-90 ml-3">
+			<a  href="{% url 'post-detail' post.id %}" > <h3>  {{post.titulo}} </h3>  </a>
+
+			<span class="badge badge-primary " >{{ post.tipo }}</span>
+			<span class="badge badge-info">{{ post.materia }}</span>
+			
+			{% for carrera in post.materia.carreras.all %}
+				<span class="badge badge-secondary">{{ carrera.nombre }}</span>
+			{% endfor %}
+			
+
+			<p class="ml-4 mt-2"> {{ post.contenido | truncatechars:200  }} </p>
+			
+			<div >
+				{% if  post.comentario_set.all|length == 1 %}
+				<p class="d-inline"> {{ post.comentario_set.all | length }} comentario</p>
+				{% else %}
+				<p class="d-inline"> {{ post.comentario_set.all | length }} comentarios</p>
+				{% endif %}
+
+				{%  if post.imagen1 or post.imagen2 or post.imagen3 %}
+				<p class="d-inline"> y con imagenes</p>
+				{% else %}
+				<p class="d-inline"> y sin imagenes</p>
+				{% endif %}
+				<a class="btn btn-success btn-sm  mb-1 ml-3" href="{% url 'post-detail' post.id %}">Ver mas</a>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+
 	{% endfor %}
+
 
 	<div class="pagination">
 		<span class="step-links">

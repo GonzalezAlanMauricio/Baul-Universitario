@@ -19,3 +19,7 @@ header{
 .ul-horizontal>li{
 	display: inline;
 }
+
+.bckgr{
+	linear-gradient(180deg, #2af598 0%, #009efd 100%)	
+}
