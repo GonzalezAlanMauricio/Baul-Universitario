@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% block title %}Perfil de {{ user.username }}{% endblock %}
 {% block content %}
 	
 	<div class="media bg-dark ">
@@ -7,10 +8,10 @@
 		<img class="rounded-circle img-cuenta" src="{{ user.perfil.imagen_perfil.url }}" >
 			
 		<ul>
-			<li>
+			<li class="perfilLi">
 				<p class="text-primary">{{ user.username }}</p>				
 			</li>
-			<li>
+			<li class="perfilLi">
 				<p class="text-secondary" >{{ user.perfil.bio }}</p>		
 			</li>
 		</ul>
