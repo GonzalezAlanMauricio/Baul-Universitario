@@ -5,6 +5,8 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.detail import DetailView
+from usuario.models import Perfil
 
 
 # Create your views here.
@@ -40,6 +42,13 @@ def registrarse(request):
 def perfil(request):
 	
 	return render(request, 'usuario/perfil.html')
+
+class PerfilDeOtro(DetailView):
+	template_name = 'usuario/perfil_detail.html'
+	def get_object(self, queryset=None):
+		pk = self.kwargs.get('pk', None) 
+		return User.objects.all().filter(pk=pk).first().perfil
+        #keyrequest_instance = KeyRequest.objects.get(pk=pk)
 
 class EliminarUsuario(LoginRequiredMixin, UserPassesTestMixin ,DeleteView):
 	model = User

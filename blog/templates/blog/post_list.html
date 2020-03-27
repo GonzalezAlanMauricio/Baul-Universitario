@@ -9,7 +9,8 @@
 
 		<div class="flex-shrink-1 mr-8 " >
 			<img class="rounded-circle img-base " src="{{ post.autor.perfil.imagen_perfil.url }}" >
-			<p>{{ post.autor }}</p>
+			<a href="{% url 'perfil-de-otro' post.autor.id %}"><p>{{ post.autor }}</p></a>
+			
 		</div>
 
 		<div class="w-90 ml-3">

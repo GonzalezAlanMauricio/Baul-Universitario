@@ -23,3 +23,8 @@ header{
 .bckgr{
 	linear-gradient(180deg, #2af598 0%, #009efd 100%)	
 }
+
+
+.perfilLi{
+	list-style: none;
+}

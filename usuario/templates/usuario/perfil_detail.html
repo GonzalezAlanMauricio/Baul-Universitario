@@ -1,18 +1,18 @@
 {% extends "blog/base.html" %}
-{% block title %}Perfil de {{ self }} {% endblock %}
+{% block title %}Perfil de {{ object.nombres }} {% endblock %}
 {% block content %}
 	
 	<div class="media bg-dark w-40">
 		
 			
-		<img class="rounded-circle img-cuenta p-2" src="{{ user.perfil.imagen_perfil.url }}" >
+		<img class="rounded-circle img-cuenta p-2" src="{{ object.imagen_perfil.url }}" >
 			
 		<ul >
 			<li class="perfilLi">
-				<p class="text-primary">{{ user.username }}</p>				
+				<p class="text-primary">{{ object.usuario.username }}</p>				
 			</li>
 			<li class="perfilLi">
-				<p class="text-secondary" >{{ user.perfil.bio }}</p>		
+				<p class="text-secondary" >{{ object.bio }}</p>		
 			</li>
 		</ul>
 		
@@ -25,11 +25,11 @@
 
 	<div class="container ">
 		<p class="text-primary">Información</p>
-		<p class="text-secondary">Apellido: {{ user.perfil.apellidos }}</p>
-		<p class="text-secondary">Nombres: {{ user.perfil.nombres }}</p>
+		<p class="text-secondary">Apellido: {{ object.apellidos }}</p>
+		<p class="text-secondary">Nombres: {{ object.nombres }}</p>
 		<p class="text-secondary">Correo: {{ user.email }}</p>
-		<p class="text-secondary">Edad: {{ user.perfil.edad }}</p>
-		<a class="btn btn-danger" href="{% url 'eliminar-usuario' %}">Eliminar Cuenta</a>
+		<p class="text-secondary">Edad: {{ object.edad }}</p>
+		
 	</div>
 
 	
