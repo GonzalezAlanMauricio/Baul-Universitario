@@ -15,6 +15,7 @@ urlpatterns = [
     path('registrarse/', usuario_views.registrarse, name= "registrarse"),
 
     path('perfil/', usuario_views.perfil, name= "perfil"),
+    path('perfil/actualizar', usuario_views.PerfilUpdateView.as_view(), name= "perfil-actualizar"),
     path('perfildeotro/<int:pk>', usuario_views.PerfilDeOtro.as_view(), name= "perfil-de-otro"),
     path('perfil/eliminar/', usuario_views.EliminarUsuario.as_view(), name= "eliminar-usuario")
 ]

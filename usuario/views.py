@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserRegisterForm
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DeleteView, UpdateView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.detail import DetailView
@@ -65,3 +65,25 @@ class EliminarUsuario(LoginRequiredMixin, UserPassesTestMixin ,DeleteView):
     	#return User.objects.filter(username=user)
 		return self.request.user
         #return get_object_or_404(User, self.kwargs.get('username'))
+
+class PerfilUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = Perfil
+	fields = ['nombres', 'apellidos', 'imagen_perfil', 'edad', 'carreras' , 'bio']
+	success_url = reverse_lazy('perfil')
+
+	def get_object(self):
+		perfilAactualizar = Perfil.objects.all().filter(usuario=self.request.user).first()
+		return perfilAactualizar
+	
+	def test_func(self):
+		perfil = self.get_object()
+		#perfilAactualizar = Perfil.objects.all().filter(user=self.request.user).first()
+		if self.request.user == perfil.usuario:
+			return True
+		return False
+
+	# def get_success_url(self):
+	# 	return reverse_lazy('perfil', kwargs={'pk': self.object.post_id})
+
+	
+        
