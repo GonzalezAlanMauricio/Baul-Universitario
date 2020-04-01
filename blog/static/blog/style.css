@@ -2,6 +2,13 @@ header{
 	margin-bottom: 10px;
 }
 
+body{
+	background-image: url('/media/bc.jpeg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
 .img-cuenta{
 	width: 6em;
 	height: 6em;
@@ -28,3 +35,6 @@ header{
 .perfilLi{
 	list-style: none;
 }
+
+.opacity-10 {
+  opacity: 0.9; }

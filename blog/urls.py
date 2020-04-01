@@ -5,14 +5,15 @@ from blog.views import (PostDetailView,
 						PostDeleteView, 
 						ComentarioCreateView, 
 						ComentarioDeleteView,
-						HomePostDetailView
+						HomePostDetailView,
+                        Inicio
 						)
 
 from . import views
 
 urlpatterns = [
-    #path('', views.index, name='blog-home'),
-    path('', HomePostDetailView.as_view(), name='blog-home'),
+    path('', Inicio.as_view(), name='blog-inicio'),
+    path('inicio/', HomePostDetailView.as_view(), name='blog-home'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('post/<int:pk>/actualizar/', PostUpdateView.as_view(), name='post-actualizar'),
     path('post/<int:pk>/eliminar/', PostDeleteView.as_view(), name='post-eliminar'),

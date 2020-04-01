@@ -2,6 +2,7 @@
 {% block title %}Registrate{% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
+<div class="container bg-dark p-3">
 	{% if request.user.is_authenticated %}
 		<p>Ya estas logeado</p>
 	{% else %}

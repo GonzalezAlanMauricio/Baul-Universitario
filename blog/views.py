@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from .models import Post
 from .models import Comentario
+from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic import ListView
@@ -12,6 +13,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 
+
+class Inicio(TemplateView):
+	    template_name = "blog/inicio.html"
 
 def index(request):
 	context = {
