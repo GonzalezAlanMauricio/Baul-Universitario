@@ -37,4 +37,9 @@ body{
 }
 
 .opacity-10 {
-  opacity: 0.9; }
+	opacity: 0.9; }
+	
+
+.paginacion {
+	margin: 0.3em;
+}
